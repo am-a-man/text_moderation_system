@@ -33,14 +33,15 @@ async function setUpModel() {
 setUpModel() 
 
 app.get('/', (req, res) => {
+    console.log("[root]: GET request recieved at '/.");
     res.send(JSON.stringify({'status':'working'}))
 })
 
 app.post('/api/post/NSFW/v1/status', (req, res, next) => {
     console.log('[root]: POST request recieved at /api/post/NSFW/v1/status')
-    // console.log(req.headers.body);
-    // var text = JSON.parse(req.headers.body).text;
-    var text = 'you suck'
+    console.log(req.headers.body);
+    var text = JSON.parse(req.headers.body).text;
+    // var text = 'you suck'
     
     var response = {}
     
