@@ -1,0 +1,23 @@
+{
+  "name": "text_moderation_system",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@tensorflow/tfjs-node": "^3.14.0",
+    "@tensorflow/tfjs-node-gpu": "^3.14.0",
+    "cross-fetch": "^3.1.5",
+    "express": "^4.17.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "devstart": "nodemon app.js",
+    "test": ""
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "@tensorflow/tfjs-node": "^3.14.0",
+    "cross-fetch": "^3.1.5",
+    "express": "^4.17.3"
+  }
+}
