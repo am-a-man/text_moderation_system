@@ -32,6 +32,10 @@ async function setUpModel() {
 
 setUpModel() 
 
+app.get('/', (req, res) => {
+    res.send(JSON.stringify({'status':'working'}))
+})
+
 app.post('/api/post/NSFW/v1/status', (req, res, next) => {
     console.log('[root]: POST request recieved at /api/post/NSFW/v1/status')
     // console.log(req.headers.body);
