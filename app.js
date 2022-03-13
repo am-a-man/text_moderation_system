@@ -76,7 +76,7 @@ app.post('/api/post/NSFW/v2/status', (req, res, next) => {
         response['nsfw_status'] = predictions;
 
         response['true_categories'] = []
-        predications.forEach(element => {
+        predictions.forEach(element => {
             if(element.results[0].match)
                 response['true_categories'].push(element.label)
         });
