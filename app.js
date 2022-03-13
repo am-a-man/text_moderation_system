@@ -33,8 +33,18 @@ async function setUpModel() {
 setUpModel() 
 
 app.get('/', (req, res) => {
-    console.log("[root]: GET request recieved at '/.");
+    console.log("[root]: GET request recieved at '/'");
     res.send(JSON.stringify({'status':'working'}))
+})
+
+
+app.get('/status', (req, res) => {
+    console.log("[root]: GET request recieved at '/status'");
+    while(model === undefined);
+
+    res.send(JSON.stringify({
+        'status': '1',
+    }))
 })
 
 app.post('/api/post/NSFW/v1/status', (req, res, next) => {
