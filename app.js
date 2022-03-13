@@ -49,8 +49,8 @@ app.get('/status', (req, res) => {
 
 app.post('/api/post/NSFW/v1/status', (req, res, next) => {
     console.log('[root]: POST request recieved at /api/post/NSFW/v1/status')
-    console.log(req.body);
-    var text = JSON.parse(req.body).text;
+    console.log(req.headers.body);
+    var text = JSON.parse(req.headers.body).text;
     // var text = 'you suck'
     
     var response = {}
