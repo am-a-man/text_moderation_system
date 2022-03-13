@@ -1,7 +1,9 @@
 const tf = require('@tensorflow/tfjs-node')
 const toxicity = require('@tensorflow-models/toxicity');
+const cors= require('cors');
 
-
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
 
 // import fetch from "node-fetch";
 const fetch = require("cross-fetch")
@@ -11,6 +13,13 @@ const express = require("express");
 
 dotenv.config()
 const app = express();
+app.use(cors());
+
+
+// app.configure(function(){
+//     app.use(express.bodyParser());
+//   });
+
 
 const port = process.env.PORT || 8080;
 app.listen(port , () => {
@@ -63,12 +72,11 @@ app.post('/api/post/NSFW/v1/status', (req, res, next) => {
 })
 
 
-app.post('/api/post/NSFW/v2/status', (req, res, next) => {
-    console.log('[root]: POST request recieved at /api/post/NSFW/v1/status')
-    console.log(req.headers.body);
-    var text = JSON.parse(req.headers.body).text;
+app.post('/api/post/NSFW/v2/status', jsonParser,  (req, res, next) => {
+    console.log('[root]: POST request recieved at /api/post/NSFW/v2/status')
+    console.log(req.body);
+    var text = req.body.text;
     // var text = 'you suck'
-    
     var response = {}
     
     model.classify([text]).then(predictions => {
@@ -81,7 +89,8 @@ app.post('/api/post/NSFW/v2/status', (req, res, next) => {
                 response['true_categories'].push(element.label)
         });
 
-        res.send(JSON.stringify(response))
+        res.send(JSON.stringify(response)) 
     })    
+
 })
 
