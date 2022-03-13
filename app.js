@@ -59,8 +59,29 @@ app.post('/api/post/NSFW/v1/status', (req, res, next) => {
         response['text'] = text;
         response['nsfw_status'] = predictions;
         res.send(JSON.stringify(response))
-    })
+    })    
+})
 
+
+app.post('/api/post/NSFW/v2/status', (req, res, next) => {
+    console.log('[root]: POST request recieved at /api/post/NSFW/v1/status')
+    console.log(req.headers.body);
+    var text = JSON.parse(req.headers.body).text;
+    // var text = 'you suck'
     
+    var response = {}
+    
+    model.classify([text]).then(predictions => {
+        response['text'] = text;
+        response['nsfw_status'] = predictions;
+
+        response['true_categories'] = []
+        predications.forEach(element => {
+            if(element.results[0].match)
+                response['true_categories'].push(element.label)
+        });
+
+        res.send(JSON.stringify(response))
+    })    
 })
 
