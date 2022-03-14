@@ -15,7 +15,6 @@ dotenv.config()
 const app = express();
 app.use(cors());
 
-
 // app.configure(function(){
 //     app.use(express.bodyParser());
 //   });
