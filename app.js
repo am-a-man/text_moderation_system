@@ -74,8 +74,8 @@ app.post('/api/post/NSFW/v1/status', (req, res, next) => {
 
 app.post('/api/post/NSFW/v2/status', jsonParser,  (req, res, next) => {
     console.log('[root]: POST request recieved at /api/post/NSFW/v2/status')
-    console.log(req);
 
+    console.log(req);
     var text = req.body.text;
 
     var response = {}
