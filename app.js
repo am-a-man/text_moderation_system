@@ -28,6 +28,7 @@ app.listen(port , () => {
 const threshold = 0.9;
 var model;
 
+
 async function setUpModel() {
     console.log("[root]: starting to load model");
     // The minimum prediction confidence.
